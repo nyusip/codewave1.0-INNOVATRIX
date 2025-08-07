@@ -1,0 +1,34 @@
+<svg width="1200" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F46E5;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#1F2937;stop-opacity:0.9" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background rectangle -->
+  <rect width="100%" height="100%" fill="url(#grad1)" />
+  
+  <!-- Abstract travel elements -->
+  <!-- Airplane -->
+  <path d="M900,150 C920,140 940,160 950,150 L1000,100 C1010,90 1000,80 990,90 L940,140 C930,150 910,130 900,150 Z" fill="white" opacity="0.2" />
+  
+  <!-- Mountains -->
+  <polygon points="0,600 200,400 400,550 600,300 800,500 1000,250 1200,600" fill="#1F2937" opacity="0.3" />
+  <polygon points="0,600 300,450 500,550 700,350 900,550 1100,400 1200,600" fill="#1F2937" opacity="0.2" />
+  
+  <!-- Sun/Moon -->
+  <circle cx="900" cy="150" r="60" fill="white" opacity="0.2" />
+  
+  <!-- Abstract map pins -->
+  <circle cx="300" cy="300" r="10" fill="white" opacity="0.3" />
+  <circle cx="700" cy="400" r="8" fill="white" opacity="0.3" />
+  <circle cx="500" cy="200" r="12" fill="white" opacity="0.3" />
+  <circle cx="800" cy="250" r="9" fill="white" opacity="0.3" />
+  
+  <!-- Abstract route lines -->
+  <path d="M300,300 C400,250 450,350 500,200" stroke="white" stroke-width="2" opacity="0.2" fill="none" />
+  <path d="M500,200 C550,300 650,350 700,400" stroke="white" stroke-width="2" opacity="0.2" fill="none" />
+  <path d="M700,400 C750,300 780,300 800,250" stroke="white" stroke-width="2" opacity="0.2" fill="none" />
+</svg>
