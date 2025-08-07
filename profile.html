@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Virtual Travel Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="index.html">Acenda</a></h1>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Destinations</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Itineraries</a></li>
+                        <li class="nav-item"><a href="booking.html" class="nav-link">Booking</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons" id="auth-buttons">
+                    <!-- Will be dynamically populated based on auth status -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="profile-section">
+            <div class="container">
+                <div class="profile-container">
+                    <div class="profile-sidebar">
+                        <div class="profile-avatar">
+                            <div class="avatar-placeholder"><!-- User initials will be added via JS --></div>
+                            <button class="btn btn-small" id="change-avatar">Change Photo</button>
+                        </div>
+                        <div class="profile-nav">
+                            <ul>
+                                <li class="active"><a href="#personal-info">Personal Information</a></li>
+                                <li><a href="#wishlist">Travel Wishlist</a></li>
+                                <li><a href="#travel-history">Travel History</a></li>
+                                <li><a href="#addresses">Addresses</a></li>
+                                <li><a href="#settings">Account Settings</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-content">
+                        <div id="profile-loading" class="profile-loading">
+                            <p>Loading your profile...</p>
+                        </div>
+                        
+                        <div id="profile-error" class="profile-error" style="display: none;">
+                            <p>There was an error loading your profile. Please try again later.</p>
+                            <button class="btn btn-primary" id="retry-load">Retry</button>
+                        </div>
+                        
+                        <div id="profile-data" style="display: none;">
+                            <!-- Personal Information Section -->
+                            <div id="personal-info" class="profile-section-content active">
+                                <h2>Personal Information</h2>
+                                <form id="personal-info-form">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="first-name">First Name</label>
+                                            <input type="text" id="first-name" name="firstName" placeholder="Enter your first name">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="last-name">Last Name</label>
+                                            <input type="text" id="last-name" name="lastName" placeholder="Enter your last name">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" placeholder="Enter your email" readonly>
+                                        <p class="field-note">Email cannot be changed</p>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="bio">Bio</label>
+                                        <textarea id="bio" name="bio" placeholder="Tell us about yourself and your travel preferences" rows="4"></textarea>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- Wishlist Section -->
+                            <div id="wishlist" class="profile-section-content">
+                                <h2>Travel Wishlist</h2>
+                                <div class="wishlist-container">
+                                    <div class="wishlist-empty" id="wishlist-empty">
+                                        <p>You haven't added any destinations to your wishlist yet.</p>
+                                        <a href="index.html" class="btn btn-primary">Explore Destinations</a>
+                                    </div>
+                                    
+                                    <div class="wishlist-items" id="wishlist-items">
+                                        <!-- Will be populated dynamically -->
+                                    </div>
+                                    
+                                    <div class="wishlist-add">
+                                        <h3>Add to Wishlist</h3>
+                                        <form id="add-wishlist-form">
+                                            <div class="form-group">
+                                                <label for="destination">Destination</label>
+                                                <input type="text" id="destination" name="destination" placeholder="Enter a city or country">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="notes">Notes</label>
+                                                <textarea id="notes" name="notes" placeholder="Why do you want to visit this place?" rows="3"></textarea>
+                                            </div>
+                                            
+                                            <div class="form-actions">
+                                                <button type="submit" class="btn btn-primary">Add to Wishlist</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Travel History Section -->
+                            <div id="travel-history" class="profile-section-content">
+                                <h2>Travel History</h2>
+                                <div class="travel-history-container">
+                                    <div class="travel-history-empty" id="history-empty">
+                                        <p>You haven't added any past trips yet.</p>
+                                    </div>
+                                    
+                                    <div class="travel-history-items" id="history-items">
+                                        <!-- Will be populated dynamically -->
+                                    </div>
+                                    
+                                    <div class="travel-history-add">
+                                        <h3>Add Past Trip</h3>
+                                        <form id="add-history-form">
+                                            <div class="form-group">
+                                                <label for="history-destination">Destination</label>
+                                                <input type="text" id="history-destination" name="destination" placeholder="Where did you go?">
+                                            </div>
+                                            
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="start-date">Start Date</label>
+                                                    <input type="date" id="start-date" name="startDate">
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="end-date">End Date</label>
+                                                    <input type="date" id="end-date" name="endDate">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="trip-notes">Trip Notes</label>
+                                                <textarea id="trip-notes" name="notes" placeholder="Share your experience" rows="3"></textarea>
+                                            </div>
+                                            
+                                            <div class="form-actions">
+                                                <button type="submit" class="btn btn-primary">Add to History</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Addresses Section -->
+                            <div id="addresses" class="profile-section-content">
+                                <h2>Addresses</h2>
+                                <div class="addresses-container">
+                                    <div class="addresses-empty" id="addresses-empty">
+                                        <p>You haven't added any addresses yet.</p>
+                                    </div>
+                                    
+                                    <div class="addresses-items" id="addresses-items">
+                                        <!-- Will be populated dynamically -->
+                                    </div>
+                                    
+                                    <div class="addresses-add">
+                                        <h3>Add New Address</h3>
+                                        <form id="add-address-form">
+                                            <div class="form-group">
+                                                <label for="address-name">Address Name</label>
+                                                <input type="text" id="address-name" name="name" placeholder="Home, Work, etc.">
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="street-address">Street Address</label>
+                                                <input type="text" id="street-address" name="street" placeholder="Street address">
+                                            </div>
+                                            
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="city">City</label>
+                                                    <input type="text" id="city" name="city" placeholder="City">
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="state">State/Province</label>
+                                                    <input type="text" id="state" name="state" placeholder="State/Province">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-row">
+                                                <div class="form-group">
+                                                    <label for="postal-code">Postal Code</label>
+                                                    <input type="text" id="postal-code" name="postalCode" placeholder="Postal code">
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="country">Country</label>
+                                                    <input type="text" id="country" name="country" placeholder="Country">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="address-notes">Notes</label>
+                                                <textarea id="address-notes" name="notes" placeholder="Additional information about this address" rows="2"></textarea>
+                                            </div>
+                                            
+                                            <div class="form-actions">
+                                                <button type="submit" class="btn btn-primary">Add Address</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Settings Section -->
+                            <div id="settings" class="profile-section-content">
+                                <h2>Account Settings</h2>
+                                <form id="settings-form">
+                                    <div class="form-group">
+                                        <label for="current-password">Current Password</label>
+                                        <input type="password" id="current-password" name="currentPassword" placeholder="Enter your current password">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="new-password">New Password</label>
+                                        <input type="password" id="new-password" name="newPassword" placeholder="Enter your new password">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="confirm-new-password">Confirm New Password</label>
+                                        <input type="password" id="confirm-new-password" name="confirmNewPassword" placeholder="Confirm your new password">
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">Update Password</button>
+                                    </div>
+                                </form>
+                                
+                                <div class="danger-zone">
+                                    <h3>Danger Zone</h3>
+                                    <button class="btn btn-danger" id="delete-account">Delete Account</button>
+                                    <p class="danger-note">This action cannot be undone. All your data will be permanently deleted.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="copyright">© 2023 Acenda. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

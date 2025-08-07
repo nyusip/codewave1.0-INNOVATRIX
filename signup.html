@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Virtual Travel Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="index.html">Acenda</a></h1>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Destinations</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Itineraries</a></li>
+                        <li class="nav-item"><a href="booking.html" class="nav-link">Booking</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-buttons">
+                    <a href="signin.html" class="btn btn-secondary">Sign In</a>
+                    <a href="signup.html" class="btn btn-primary active">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="auth-section">
+            <div class="container">
+                <div class="auth-container">
+                    <div class="auth-content">
+                        <h2 class="auth-title">Create an Account</h2>
+                        <p class="auth-subtitle">Join Acenda to create personalized travel itineraries</p>
+                        
+                        <form id="signup-form" class="auth-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" id="first-name" name="firstName" placeholder="Enter your first name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" id="last-name" name="lastName" placeholder="Enter your last name" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Create a password" required>
+                                <p class="password-hint">Password must be at least 8 characters with a number and a special character</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
+                            </div>
+                            
+                            <div class="form-group terms">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                            </div>
+                            
+                            <div id="signup-message" class="auth-message"></div>
+                        </form>
+                        
+                        <div class="auth-divider">
+                            <span>or sign up with</span>
+                        </div>
+                        
+                        <div class="social-auth">
+                            <button class="btn btn-social btn-google">
+                                <span class="social-icon">G</span>
+                                Google
+                            </button>
+                            <button class="btn btn-social btn-facebook">
+                                <span class="social-icon">f</span>
+                                Facebook
+                            </button>
+                        </div>
+                        
+                        <div class="auth-footer">
+                            <p>Already have an account? <a href="signin.html">Sign in</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="auth-image">
+                        <!-- Decorative image or pattern -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p class="copyright">© 2023 Acenda. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+</body>
+</html>

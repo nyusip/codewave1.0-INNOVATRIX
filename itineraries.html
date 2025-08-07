@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Itineraries | Acenda</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="itineraries.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">Acenda</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/destinations.html">Destinations</a></li>
+        <li><a href="/itineraries.html" class="active">Itineraries</a></li>
+        <li><a href="/booking.html">Booking</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <a href="/signin.html" class="btn btn-outline">Sign In</a>
+      <a href="/signup.html" class="btn btn-filled">Sign Up</a>
+    </div>
+  </header>
+
+  <!-- Itinerary Section -->
+  <main class="itinerary-container">
+    <h1>Your Travel Itinerary</h1>
+
+    <div class="itinerary-box">
+      <p><strong>Visited Destinations:</strong> <span id="visited"></span></p>
+      <p><strong>Current Destination:</strong> <span id="current"></span></p>
+      <p><strong>Day of Trip:</strong> <span id="day"></span></p>
+    </div>
+
+    <div class="plan-box">
+      <h2>Today's Plan</h2>
+      <ul id="plan-list"></ul>
+    </div>
+  </main>
+
+  <script src="itineraries.js"></script>
+</body>
+</html>
