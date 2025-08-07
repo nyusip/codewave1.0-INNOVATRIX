@@ -51,10 +51,12 @@ node server.js
 
 # 4. Open your browser and go to:
 http://localhost:3000
+
 ## 👥 Team Members
 
 - Nyusi Patel  
 - Rutvi Jadav  
 - Soni Rajput  
 - Taha Travadi
+
 [📄 View Presentation PDF](./assets/BookMyYatra_Presentation.pdf)
